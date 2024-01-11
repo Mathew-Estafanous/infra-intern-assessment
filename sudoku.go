@@ -16,6 +16,7 @@ func SolveSudoku(grid [][]int) [][]int {
 	return result
 }
 
+// solveWithBacktracking solves the sudoku puzzle using recursive backtracking.
 func solveWithBacktracking(grid [][]int) bool {
 	for r := 0; r < 9; r++ {
 		for c := 0; c < 9; c++ {
@@ -45,19 +46,18 @@ func solveWithBacktracking(grid [][]int) bool {
 	return true
 }
 
-// isValid ensures that the choice is valid for the given row, column and 3x3 grid.
-// Because implementation is in constant time, multiple calls can be made with limited impact on performance.
+// isValid checks if the choice is valid for the given row, column and 3x3 grid.
 func isValid(grid [][]int, row, col, choice int) bool {
 	// check all elements in row are not equal to choice
-	for x := 0; x < 9; x++ {
-		if grid[row][x] == choice {
+	for c := 0; c < 9; c++ {
+		if grid[row][c] == choice {
 			return false
 		}
 	}
 
 	// validate all elements in column are not equal to choice
-	for x := 0; x < 9; x++ {
-		if grid[x][col] == choice {
+	for r := 0; r < 9; r++ {
+		if grid[r][col] == choice {
 			return false
 		}
 	}
