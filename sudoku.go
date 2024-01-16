@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // SolveSudoku solves a 9x9 sudoku puzzle through the means of a Constraint Satisfaction Problem
 // using backtracking to find the solution. To optimize backtracking we use interleaving to validate
 // the choice before continuing to the next solution. Doing so eliminates unnecessary traversals of
@@ -13,6 +15,13 @@ func SolveSudoku(grid [][]int) [][]int {
 	}
 
 	solveWithBacktracking(result)
+
+	// Display sudoku result as 9x9 table
+	fmt.Println("== Solution ==")
+	for _, row := range result {
+		fmt.Println(row)
+	}
+
 	return result
 }
 
